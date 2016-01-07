@@ -6,19 +6,20 @@ import org.junit.Test;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 public class graphAPITest {
-	GraphAPI API = new GraphAPI("CAACEdEose0cBAPO6slZCnZCHwdXcDboWv8wU4pS7UvuiSWrB5pMTv8hRntMei2bibEZCwLZA3ePla172xnyr0ZCBJst4FGLpJ4z6GC8ZCIK8iIjCBasPSPyZCQvZAZCjbRHHLWLrobc2lmmblFJ6cHgKefYLfnSQJWRZCkKofyolYToZBMZBWGJB1a6TnPdvOr9vZBfMFrzjBN712r2TirqY3O2Eh");
+	final String accessToken = "CAACEdEose0cBABPtEzKoUL5or4SxZAaHZAZCGAMB8SP7M7j8o61ivyjqzBtwEyuMX2DMKcBj6tVVJy9OGpOj002yJiqCYEiJwhaFu8Byx8YICpPZBrPXvskXXaosyJpZCYXsldQaKOVhq8bTYck4N9U53pvhkWXqYnxiekQAQiucmdOruZBkmNZATG0uWYCQrkBUfUkNHBeVZBJezFAQJf6z";
+	GraphAPI API = new GraphAPI(accessToken);
 	
 	@Test
-	public void nameTest() throws UnirestException {
+	public void testsGetName() throws UnirestException {
 		String name = API.getName("613415685427880");
 		assertEquals("Alex Rosh", name);
 	}
 	
 	@Test
-	public void birthdayTest() throws UnirestException{
-		Date birthday = API.getBirthday("613415685427880");
+	public void testsGetBirthday() throws UnirestException{
+		Date actual = API.getBirthday("613415685427880");
 		Date expected = new Date(1996-1900, 3-1, 28);
-		assertEquals(expected, birthday);
+		assertEquals(expected, actual);
 	}
 
 }
