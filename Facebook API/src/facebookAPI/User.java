@@ -1,5 +1,7 @@
 package facebookAPI;
 
+import java.util.Date;
+
 import org.json.JSONObject;
 
 import com.mashape.unirest.http.HttpResponse;
@@ -9,8 +11,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 
 public class User {
 	
-	public static final String URL = "https://graph.facebook.com/v2.5/?";
-	public static final String ACCESS_TOKEN = "CAACEdEose0cBAL02N78OKYBvTvix4zyOZB65DdHKD0NRipedScf1MB3tv3917xafIw75Xz8ZBUMaVfkQ6LrUYZAaZAfivVaGZBkzlHDAn1JwqmJAmBKrU736v7XVOgPl9ZBhDCZB0n2PIRpkyD7GiUk3HqsB0XJZApsEcZBAT5DshX84yJtXb3hQjZB4lHp7oSIBferkTyTHGCOQJ0UCjjm0MZC";
+	private GraphAPI API = new GraphAPI("CAACEdEose0cBACZBJfd2gP9VUAHH20G2LxgkL3apSICZCQ7guFKEiynZC9vXsAEm35tl0oG6sLQWfUeZBjAkcC9ozn9zBuEwDih5h8hrs3sYCMCwORhDF7IgorS4lbYS3L0wuVWZC9s3x5Gr7ljRccdYVwriMwJAtMGf3XZBtlInSuh36w3OjGwO46wekneynAwddo7bt38FhIjwDrIH6z");
 	private String id;
 	
 	public User(String id){
@@ -21,23 +22,20 @@ public class User {
 		return id;
 	}
 	
-	public JsonNode getField(String field) throws UnirestException {
-		return Unirest.get(URL+"access_token="+ACCESS_TOKEN).queryString("ids", id).queryString("fields", field).asJson().getBody();
+	
+	public String getName() throws UnirestException{
+		return API.getName(id);
 	}
 	
-	public JSONObject getName() throws UnirestException{
-		return this.getField("name").getObject();
-	}
-	
-	public JSONObject getBrithday() throws UnirestException{
-		return this.getField("birthday").getObject();
+	public Date getBirthday() throws UnirestException{
+		return API.getBirthday(id);
 	}
 	
 	
 	public static void main(String[] args) {
 		try{
 			User alex = new User("613415685427880");
-			System.out.println(alex.getBrithday());
+			System.out.println(alex.getBirthday());
 			System.out.println(alex.getName());
 			System.out.println(alex.getId());
 		}
