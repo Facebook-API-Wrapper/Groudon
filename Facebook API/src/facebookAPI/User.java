@@ -11,9 +11,9 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 
 public class User {
 	
-	private GraphAPI API = new GraphAPI("CAACEdEose0cBACZBJfd2gP9VUAHH20G2LxgkL3apSICZCQ7guFKEiynZC9vXsAEm35tl0oG6sLQWfUeZBjAkcC9ozn9zBuEwDih5h8hrs3sYCMCwORhDF7IgorS4lbYS3L0wuVWZC9s3x5Gr7ljRccdYVwriMwJAtMGf3XZBtlInSuh36w3OjGwO46wekneynAwddo7bt38FhIjwDrIH6z");
+	private String accessToken = "CAACEdEose0cBAIzo93CdC5QA4ZBm2bCZASsJzeaUfqNgdYNuWzRGdx3YKZAdGb1tE29MPUV17zC9toFfkRdfii1uGlh1Y6Qcp2HxfXgvxpm4LzasVhi19hrKKjyZBQPKKnZAPOevITIq136RCrIGZAXnPEMpQnudZCtwMrVWhZCWbkzV8ZBPvZB77oCorTBZB8DWh8exy7wWR8Rkh09B0JRvtwW";
+	private GraphAPI API = new GraphAPI(accessToken);
 	private String id;
-	
 	public User(String id){
 		this.id=id;
 	}

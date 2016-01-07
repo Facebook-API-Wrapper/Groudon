@@ -12,17 +12,17 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 public class GraphAPI {
 	
 	static final String URL = "https://graph.facebook.com/v2.5/?";
-	public final String ACCESS_TOKEN;
+	public final String accessToken;
 	final String NAME_PARAM = "name";
 	final String BIRTHDAY_PARAM = "birthday";
 	
 	public GraphAPI(String accessToken){
-		ACCESS_TOKEN = accessToken;
+		this.accessToken = accessToken;
 	}
 	
 	private JsonNode getField(String id, String field) throws UnirestException {
 		return Unirest.get(URL)
-				.queryString("access_token",ACCESS_TOKEN)
+				.queryString("access_token",accessToken)
 				.queryString("ids", id)
 				.queryString("fields", field)
 				.asJson()
@@ -48,7 +48,7 @@ public class GraphAPI {
 	
 	public static void main(String[] args) throws UnirestException{
 		try{
-			GraphAPI test = new GraphAPI("CAACEdEose0cBAK8gitk1zchOnDZCvCeZB6JEgIAnyREZBismAK11cusqoLxmmZAeLZAKZALABQoZCCQZAmfYDODLCQxdjwrXTlQ1apui2R8B707SoLKsrme9xOEVIkXO3oyJNQ7MqHsxhzrZATbLEZCsuZBcRdivlgyuZCD44ZAoJGX3k3eOKFVX2lzlZAyrlSqbuVe4GlxFAU022OirEQYpKZC8Lvl");
+			GraphAPI test = new GraphAPI("CAACEdEose0cBAIzo93CdC5QA4ZBm2bCZASsJzeaUfqNgdYNuWzRGdx3YKZAdGb1tE29MPUV17zC9toFfkRdfii1uGlh1Y6Qcp2HxfXgvxpm4LzasVhi19hrKKjyZBQPKKnZAPOevITIq136RCrIGZAXnPEMpQnudZCtwMrVWhZCWbkzV8ZBPvZB77oCorTBZB8DWh8exy7wWR8Rkh09B0JRvtwW");
 			System.out.println(test.getName("613415685427880"));
 			System.out.println(test.getBirthday("613415685427880"));
 		}
